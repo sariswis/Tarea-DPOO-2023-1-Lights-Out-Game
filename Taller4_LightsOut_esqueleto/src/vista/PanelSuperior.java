@@ -1,11 +1,8 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
@@ -53,35 +50,24 @@ public class PanelSuperior extends JPanel{
 	    add(this.facil);
 	    add(this.medio);
 	    add(this.dificil);
-	    
-	    opciones.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	    		String selected = (String) opciones.getSelectedItem();
-	            ventana.setTamaño(Integer.valueOf(selected.substring(0, 1)));
-	        }
-	    });
-	    
-	    facil.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	        	 ventana.setDificultad(FACIL);
-	        }
-	    });
-	    
-	    medio.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	        	 ventana.setDificultad(MEDIO);
-	        }
-	    });
-	    
-	    dificil.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	 ventana.setDificultad(DIFICIL);
-	        }
-	    });
-	    
+	}
+	
+	public int getTamanio() {
+		String selected = (String) opciones.getSelectedItem();
+        return Integer.valueOf(selected.substring(0, 1));
+	}
+	
+	public int getDificultad() {
+		ButtonModel selected= grupo.getSelection();
+		if (selected == facil.getModel()) {
+		    return FACIL;
+		} else if (selected == medio.getModel()) {
+			return MEDIO;
+		} else if (selected == dificil.getModel()) {
+			return DIFICIL;
+		} else {
+			return FACIL;
+		}
 	}
 	
 	public JLabel crearLabel(String nombre) {
@@ -94,6 +80,7 @@ public class PanelSuperior extends JPanel{
 	public JRadioButton crearRadioButton(String nombre) {
 		JRadioButton boton = new JRadioButton(nombre);
 		boton.setForeground(Color.WHITE);
+		boton.setBackground(new Color (3,135,255));
 		boton.setFont(new Font("Arial", Font.PLAIN, 15));
 		return boton;
 	}

@@ -1,7 +1,6 @@
 package vista;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -9,7 +8,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.RoundRectangle2D;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.MouseEvent;
@@ -20,7 +18,7 @@ public class PanelTablero extends JPanel implements MouseListener {
 	private VentanaJuego ventana;
 	private int[][] cantidades;
 	private boolean[][] tablero;
-	private int tamaño;
+	private int tamanio;
 	private int altoPanel;
 	private int anchoPanel;
 	private int gap =10;
@@ -28,11 +26,11 @@ public class PanelTablero extends JPanel implements MouseListener {
 	private int anchoCasilla;
 
 	
-	public PanelTablero(VentanaJuego ventana, int tamaño, boolean[][] tablero) {
+	public PanelTablero(VentanaJuego ventana, int tamanio, boolean[][] tablero) {
 		this.ventana = ventana;
-		this.tamaño = tamaño;
+		this.tamanio = tamanio;
 		this.tablero = tablero;
-		this.cantidades = new int[tamaño][tamaño];
+		this.cantidades = new int[tamanio][tamanio];
 		addMouseListener(this);
 	}
 	
@@ -49,11 +47,11 @@ public class PanelTablero extends JPanel implements MouseListener {
 	private int[] convertirCoordenadasACasilla(int x, int y){
 		int fila = (int) (y / (altoCasilla + gap));
 		int columna = (int) (x / (anchoCasilla + gap));
-		if (fila >=  tamaño) {
-			fila = tamaño - 1;
+		if (fila >=  tamanio) {
+			fila = tamanio - 1;
 		}
-		if (columna >=  tamaño) {
-			columna = tamaño - 1;
+		if (columna >=  tamanio) {
+			columna = tamanio - 1;
 		}
 		return new int[] { fila, columna };
 	}
@@ -62,22 +60,22 @@ public class PanelTablero extends JPanel implements MouseListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        anchoPanel = getWidth() - (gap * (tamaño + 1));
-        altoPanel = getHeight() - (gap * (tamaño + 1));
-        anchoCasilla = anchoPanel / tamaño;
-        altoCasilla = altoPanel / tamaño;
+        anchoPanel = getWidth() - (gap * (tamanio + 1));
+        altoPanel = getHeight() - (gap * (tamanio + 1));
+        anchoCasilla = anchoPanel / tamanio;
+        altoCasilla = altoPanel / tamanio;
         int x = gap;
         int y = gap;
         g2.setFont(new Font("Arial", Font.PLAIN, 14));
         Image image;
 		try {
 			image = ImageIO.read(new File("data/luz.png"));
-	        for (int row = 0; row < tamaño; row++) {
-	            for (int col = 0; col < tamaño; col++) {
+	        for (int row = 0; row < tamanio; row++) {
+	            for (int col = 0; col < tamanio; col++) {
 	            	if(tablero[row][col]) {
-	            		g2.setColor(new Color(101, 100, 91));
-	            	} else {
 	            		g2.setColor(new Color(255, 215, 3));
+	            	} else {
+	            		g2.setColor(new Color(101, 100, 91));
 	            	}
 	                g2.fillRoundRect(x, y, anchoCasilla, altoCasilla, 20, 20);
 	                g2.drawImage(image, x, y, (int) (anchoCasilla*0.8), (int) (altoCasilla*0.8), null);
@@ -94,7 +92,8 @@ public class PanelTablero extends JPanel implements MouseListener {
     }
 	
 	public void actualizar(boolean[][] tablero) {
-		
+		this.tablero = tablero;
+		repaint();
 	}
 
 	@Override

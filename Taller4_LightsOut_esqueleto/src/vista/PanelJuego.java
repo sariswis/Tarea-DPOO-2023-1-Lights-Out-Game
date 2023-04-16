@@ -5,7 +5,9 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PanelJuego extends JPanel {
 	private VentanaJuego ventana;
+	private DialogTop10 dialog;
 	private JButton nuevo;
 	private JButton reiniciar;
 	private JButton top;
@@ -29,36 +32,47 @@ public class PanelJuego extends JPanel {
 		setAlignmentX(Component.CENTER_ALIGNMENT);
 		setAlignmentY(Component.CENTER_ALIGNMENT);
 		
+	    Dimension maxButtonSize = new Dimension(Integer.MAX_VALUE, 50);
+	    this.nuevo.setMaximumSize(maxButtonSize);
+	    this.reiniciar.setMaximumSize(maxButtonSize);
+	    this.top.setMaximumSize(maxButtonSize);
+	    this.cambiar.setMaximumSize(maxButtonSize);
+		
+		add(Box.createVerticalGlue());
 		add(this.nuevo);
+		add(Box.createVerticalStrut(10));
 		add(this.reiniciar);
+		add(Box.createVerticalStrut(10));
 		add(this.top);
+		add(Box.createVerticalStrut(10));
 		add(this.cambiar);
+		add(Box.createVerticalGlue());
 		
 	    nuevo.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-
+	        	ventana.nuevo();
 	        }
 	    });
 	    
 	    reiniciar.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-
+	        	ventana.reiniciar();
 	        }
 	    });
 	    
 	    top.addActionListener(new ActionListener() {
-	        @Override
+			@Override
 	        public void actionPerformed(ActionEvent e) {
-
+	        	dialog = new DialogTop10(ventana.darRegistros());
 	        }
 	    });
 	    
 	    cambiar.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-
+	        	ventana.cambiarJugador();
 	        }
 	    });
 	}

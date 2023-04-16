@@ -6,15 +6,17 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class PanelInferior extends JPanel {
 	private JLabel jugadas;
-	private JLabel jugador;
+	private JTextField jugador;
 	
 	public PanelInferior(int numJugadas) {
 		this.jugadas = crearLabel(String.valueOf(numJugadas));
-		this.jugador = crearLabel("");
+		this.jugador = new JTextField("");
 		
 		setLayout(new GridLayout(1,4));
 		setBackground(Color.LIGHT_GRAY);
@@ -29,13 +31,14 @@ public class PanelInferior extends JPanel {
 		jugadas.setText(String.valueOf(cantidad));
 	}
 	
-	public void setJugador(String nombre) {
-		jugador.setText(nombre);
+	public String getJugador() {
+		return jugador.getText();
 	}
 	
 	public JLabel crearLabel(String nombre) {
 		JLabel label = new JLabel(nombre);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
 		return label;
 	}
 }
