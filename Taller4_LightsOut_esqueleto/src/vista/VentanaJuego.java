@@ -71,7 +71,7 @@ public class VentanaJuego extends JFrame {
 		try {
 			top10.salvarRecords(this.archivo);
 		} catch (Exception e) {
-			System.out.println("Ocurriï¿½ un error al salvar el Top 10");
+			System.out.println("Ocurrió un error al salvar el Top 10");
 			e.printStackTrace();
 		}
 	}
@@ -122,9 +122,9 @@ public class VentanaJuego extends JFrame {
 		String mensaje;
 		jugador = pInferior.getJugador();
 		if (jugador.equals("")) {
-			mensaje = "ï¿½Bienvenido jugador!"; 
+			mensaje = "¡Bienvenido jugador!"; 
 		} else {
-			mensaje = "ï¿½Bienvenido jugador " + jugador + "!"; 
+			mensaje = "¡Bienvenido jugador " + jugador + "!"; 
 		}
 		JOptionPane.showMessageDialog(this, mensaje, "Cambiar jugador", JOptionPane.INFORMATION_MESSAGE);
 	}
