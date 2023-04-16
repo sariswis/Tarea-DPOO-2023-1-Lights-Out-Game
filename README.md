@@ -9,3 +9,5 @@ NOTAS: Ejecute en Eclipse. Se cambió a un jdk-20
 4. Puede reiniciar el juego a su estado inicial o consultar el Top 10 con los botones asignados
 5. Para cambiar de jugador, escriba su nombre en el JTextField inferior y oprima el botón "Cambiar jugador"
 6. Al acabar al juego, se le notificará su puntaje y si alcanzó el Top 10. Puede crear un nuevo juego o reiniciarlo.
+
+![image](https://user-images.githubusercontent.com/101780188/232346007-5ab3aee7-4f01-4cd9-a146-2f4d43d2f5be.png)
