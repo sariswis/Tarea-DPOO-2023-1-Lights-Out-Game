@@ -1,6 +1,6 @@
 # Tarea DPOO 2023-1 - Lights Out Game
 
-Este repositorio almacena un juego llamado Lights Out implementado en Java, el cual cuenta con interfaz gráfica soportada por Swing
+Este repositorio almacena un juego llamado Lights Out implementado en Java, el cual cuenta con interfaz gráfica soportada por Swing y AWT
 
 Esta fue una de la materia Diseño y Programación Orientada a Objetos de la Universidad de los Andes para el semestre 2023-1
 
